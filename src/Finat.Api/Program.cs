@@ -9,6 +9,7 @@ builder.Services
 
 var app = builder.Build();
 app.UseSwaggerDocs();
+app.MapEndpoints();
 app.UseHttpsRedirection();
 
 app.Run();
