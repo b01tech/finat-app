@@ -4,9 +4,9 @@ public class PagedResponse<T> : Response<T>
 {
     public int CurrentPage { get; set; }
     public int PageSize { get; set; }
-    public int TotalPages { get; set; }
+    public int TotalPages => (int)Math.Ceiling(TotalItems / (double)PageSize);
     public int TotalItems { get; set; }
-    public PagedResponse(int code, T data, List<string> errors, int page, int pageSize, int totalItems, int totalPages)
+    public PagedResponse(int code, T data, int page, int pageSize, int totalItems, List<string>? errors = null)
         : base(code, data, errors)
     {
         if (page < 1)  page = Configuration.DefaultPage;
@@ -17,6 +17,5 @@ public class PagedResponse<T> : Response<T>
         CurrentPage = page;
         PageSize = pageSize;
         TotalItems = totalItems;
-        TotalPages = totalPages;
     }
 }
