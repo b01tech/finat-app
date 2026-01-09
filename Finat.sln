@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{63B940FA-4FDC-4BD9-A221-CE60D6985B45}"
+	ProjectSection(SolutionItems) = preProject
+		src\.editorconfig = src\.editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finat.Core", "src\Finat.Core\Finat.Core.csproj", "{EAAACF0E-2C4A-4C30-A6BF-E31978A04418}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EAAACF0E-2C4A-4C30-A6BF-E31978A04418} = {63B940FA-4FDC-4BD9-A221-CE60D6985B45}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAAACF0E-2C4A-4C30-A6BF-E31978A04418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAAACF0E-2C4A-4C30-A6BF-E31978A04418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAAACF0E-2C4A-4C30-A6BF-E31978A04418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAAACF0E-2C4A-4C30-A6BF-E31978A04418}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
