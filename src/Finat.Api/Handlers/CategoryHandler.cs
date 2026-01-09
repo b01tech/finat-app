@@ -1,4 +1,4 @@
-﻿using Finat.Api.Infra.Data;
+using Finat.Api.Infra.Data;
 using Finat.Core.Handlers;
 using Finat.Core.Models;
 using Finat.Core.Requests.Categories;
@@ -51,15 +51,22 @@ internal class CategoryHandler(AppDbContext dbContext) : ICategoryHandler
         return new Response<Category>(StatusCodes.Status200OK, result);
     }
 
-    public async Task<Response<List<Category>>> GetAllCategoriesAsync(GetAllCategoryRequest request)
+    public async Task<PagedResponse<List<Category>>> GetAllCategoriesAsync(
+        GetAllCategoryRequest request)
     {
-        var result = await dbContext.Categories
-            .AsNoTracking()
+        var query = dbContext.Categories.AsNoTracking();
+        var count = await query.CountAsync();
+
+        var result = await query
             .Skip((request.PageNumber - 1) * request.PageSize)
             .Take(request.PageSize)
             .ToListAsync();
-        if (result.Count is 0)
-            return new Response<List<Category>>(StatusCodes.Status204NoContent);
-        return new Response<List<Category>>(StatusCodes.Status200OK, result);
+
+        return new PagedResponse<List<Category>>(
+            StatusCodes.Status200OK,
+            result,
+            request.PageNumber,
+            request.PageSize,
+            count);
     }
 }
